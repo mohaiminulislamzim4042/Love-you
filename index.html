@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Juairia 🤍</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&family=Playfair+Display:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ff4d6d;
+        --glass: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+      }
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        font-family: "Hind Siliguri", sans-serif;
+        background: #000;
+        overflow: hidden;
+      }
+
+      /* High-Highlight Background */
+      .bg-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, #3d0814 0%, #000 100%);
+        z-index: -3;
+      }
+
+      .hibiscus-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://images.unsplash.com/photo-1591958911259-bee2173bdccc?auto=format&fit=crop&w=1200&q=80")
+          center/cover;
+        opacity: 0.45;
+        z-index: -2;
+        mix-blend-mode: overlay;
+        animation: moveBg 12s infinite alternate ease-in-out;
+      }
+
+      @keyframes moveBg {
+        from {
+          transform: scale(1.1);
+        }
+        to {
+          transform: scale(1.25);
+        }
+      }
+
+      /* Juairia Watermark Grid */
+      .watermark-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        z-index: -1;
+        pointer-events: none;
+        gap: 40px;
+        padding: 10px;
+      }
+
+      .wm-text {
+        color: rgba(255, 255, 255, 0.1);
+        font-size: 1.5rem;
+        font-weight: bold;
+        transform: rotate(-25deg);
+        font-family: "Playfair Display", serif;
+      }
+
+      /* Pro Neon Glass Card */
+      .wrapper {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+      }
+
+      .card {
+        background: var(--glass);
+        backdrop-filter: blur(35px);
+        -webkit-backdrop-filter: blur(35px);
+        border: 2px solid rgba(255, 77, 109, 0.6);
+        border-radius: 40px;
+        padding: 45px 30px;
+        width: 100%;
+        max-width: 380px;
+        text-align: center;
+        box-shadow: 0 0 40px rgba(255, 77, 109, 0.4);
+        position: relative;
+      }
+
+      h2 {
+        font-size: 2.3rem;
+        color: #fff;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-shadow: 0 0 15px #ff4d6d;
+      }
+      p {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 35px;
+      }
+
+      .btn {
+        background: linear-gradient(90deg, #ff4d6d, #c9184a);
+        color: white;
+        border: none;
+        padding: 18px;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(255, 77, 109, 0.5);
+        transition: 0.3s;
+      }
+
+      .btn:active {
+        transform: scale(0.95);
+      }
+
+      .white-heart {
+        position: absolute;
+        color: white;
+        pointer-events: none;
+        animation: glowFloat 4s linear forwards;
+        filter: drop-shadow(0 0 5px #fff);
+      }
+
+      @keyframes glowFloat {
+        0% {
+          transform: translateY(110vh) scale(0.5);
+          opacity: 0;
+        }
+        30% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) scale(1.5);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-layer"></div>
+    <div class="hibiscus-bg"></div>
+    <div class="watermark-grid" id="wm-grid"></div>
+
+    <div class="wrapper">
+      <div class="card" id="main-card">
+        <h2 id="title">শুনছিস? 🤍</h2>
+        <p id="desc">
+          তোর জন্য অনেক কিছু জমানো আছে এই পেজটায়, শেষ পর্যন্ত দেখবি তো? একদম মিস
+          করিস না!🤫 তোর জন্য কি আছে দেখবি? 🤍 একটা করে ক্লিক কর একটা করে পড়।🥰
+          ..........এইখানে।👇
+        </p>
+        <button class="btn" onclick="nextStep()" id="btn-txt">
+          হ্যাঁ দেখবো।🤔
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const grid = document.getElementById("wm-grid");
+      for (let i = 0; i < 28; i++) {
+        const el = document.createElement("div");
+        el.className = "wm-text";
+        el.innerText = "Juairia";
+        grid.appendChild(el);
+      }
+
+      let step = 0;
+      const data = [
+        {
+          t: "আসসালামু আলাইকুম 🤍",
+          d: "শুরুতেই শুকরিয়া জানাই সেই মহান রবের কাছে, যিনি তোকে আমার জীবনে পাঠিয়েছেন।",
+          b: "ওয়ালাইকুম আসসালাম 🤍",
+        },
+        {
+          t: "আলহামদুলিল্লাহ 🤍",
+          d: "আল্লাহর রহমতে তোর জীবনের আরও একটি বছর পূর্ণ হলো। তোর সামনের পথ চলায় আল্লাহ বরকত দিন।",
+          b: "একটা সত্যি কথা শুনবি? 🤍",
+        },
+        {
+          t: "শুভ জন্মদিন জুয়াইরিয়া 🤍",
+          d: "ইচ্ছা ছিল কালই বলবো, কিন্তু সময়ের অভাবে একদমই সুযোগ পাইনি। তাই আজ লেট করেই বলছি 😅। দেরি হ্যাপি বার্থডে জুয়াইরিয়া😘!",
+          b: "তোর জন্য দোয়া... 🤍",
+        },
+        {
+          t: "তোর জন্য দোয়া করছি 🤍",
+          d: "আল্লাহ তোকে ঈমানদার হিসেবে কবুল করুন এবং তোর প্রতিটা নেক আশা পূরণ করে দিন। আমিন।",
+          b: "তোর হাসিটা... 🌺",
+        },
+        {
+          t: "তুই আমার hibiscus rosa-sinensis 🌺",
+          d: "তোর ওই হাসিটা জবা ফুলের মতোই পবিত্র। মাঝে মাঝে মনে হয় তোর হাসির প্রেমে পড়তে পড়তেই আমার জীবনটা কেটে যাবে।",
+          b: "একটু অপেক্ষা কর... 🤍",
+        },
+        {
+          t: "মনের গভীর থেকে... 🤍",
+          d: "তোর হাসি মুখ টাদেখার সেই অনুভূতিটা আজও আমায় ভাবায়। তুই শুধু আমার ভালোবাসা নোস, তুই আমার কলিজার প্রশান্তি।",
+          b: "শেষ সারপ্রাইজটা দেখ 🤍",
+        },
+        {
+          t: "কবুল করো মাবুদ 🤲",
+          d: "আল্লাহ চাইলে তুই-ই হবি আমার বউ 🤭। ইনশাআল্লাহ সব সময় এভাবেই পাশে থাকবি।",
+          b: "শেষ 🤍",
+        },
+        {
+          t: "আল্লাহ হাফেজ 🤍",
+          d: "ব্যাস! আজ এইটুকুই। এখন কাটি দিতে পারিস 🤗। ভালো থাকিস সব সময়।",
+          b: "আবার শুরু থেকে দেখব আমি🙂 ",
+        },
+      ];
+
+      function nextStep() {
+        const card = document.getElementById("main-card");
+        card.style.opacity = "0";
+        card.style.transform = "translateY(15px)";
+
+        setTimeout(() => {
+          if (step >= data.length) step = 0;
+          document.getElementById("title").innerText = data[step].t;
+          document.getElementById("desc").innerText = data[step].d;
+          document.getElementById("btn-txt").innerText = data[step].b;
+
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+          step++;
+        }, 300);
+      }
+
+      function createHeart() {
+        const h = document.createElement("div");
+        h.className = "white-heart";
+        h.innerHTML = "🤍";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.fontSize = Math.random() * 15 + 20 + "px";
+        h.style.animationDuration = Math.random() * 2 + 2 + "s";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4000);
+      }
+      setInterval(createHeart, 250);
+    </script>
+  </body>
+</html>
